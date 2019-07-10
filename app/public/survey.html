@@ -45,7 +45,7 @@
                 <label for="question1"> <strong>Generally speaking, you rely more on your experience than your
                         imagination.
                     </strong> </label>
-                <select class="form-control" id="question1" style="width: 30%">
+                <select class="form-control" id="question2" style="width: 30%">
                     <option value="" selected disabled>Please select an option</option>
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
@@ -60,7 +60,7 @@
             <div class="form-group">
                 <label for="question1"> <strong>You find it easy to stay relaxed and focused even when there is some
                         pressure.</strong> </label>
-                <select class="form-control" id="question1" style="width: 30%">
+                <select class="form-control" id="question3" style="width: 30%">
                     <option value="" selected disabled>Please select an option</option>
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
@@ -73,7 +73,7 @@
             <p style="font-size:20px;"><strong>Question 4</strong></p>
             <div class="form-group">
                 <label for="question1"> <strong>You rarely do something just out of sheer curiosity.</strong> </label>
-                <select class="form-control" id="question1" style="width: 30%">
+                <select class="form-control" id="question4" style="width: 30%">
                     <option value="" selected disabled>Please select an option</option>
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
@@ -86,7 +86,7 @@
             <p style="font-size:20px;"><strong>Question 5</strong></p>
             <div class="form-group">
                 <label for="question1"> <strong>People can rarely upset you.</strong> </label>
-                <select class="form-control" id="question1" style="width: 30%">
+                <select class="form-control" id="question5" style="width: 30%">
                     <option value="" selected disabled>Please select an option</option>
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
@@ -100,7 +100,7 @@
             <div class="form-group">
                 <label for="question1"> <strong>It is often difficult for you to relate to other people’s
                         feelings.</strong> </label>
-                <select class="form-control" id="question1" style="width: 30%">
+                <select class="form-control" id="question6" style="width: 30%">
                     <option value="" selected disabled>Please select an option</option>
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
@@ -114,7 +114,7 @@
             <div class="form-group">
                 <label for="question1"> <strong>In a discussion, truth should be more important than people’s
                         sensitivities.</strong> </label>
-                <select class="form-control" id="question1" style="width: 30%">
+                <select class="form-control" id="question7" style="width: 30%">
                     <option value="" selected disabled>Please select an option</option>
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
@@ -127,7 +127,7 @@
             <p style="font-size:20px;"><strong>Question 8</strong></p>
             <div class="form-group">
                 <label for="question1"> <strong>You rarely get carried away by fantasies and ideas.</strong> </label>
-                <select class="form-control" id="question1" style="width: 30%">
+                <select class="form-control" id="question8" style="width: 30%">
                     <option value="" selected disabled>Please select an option</option>
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
@@ -141,7 +141,7 @@
             <div class="form-group">
                 <label for="question1"> <strong>You think that everyone’s views should be respected regardless of
                         whether they are supported by facts or not.</strong> </label>
-                <select class="form-control" id="question1" style="width: 30%">
+                <select class="form-control" id="question9" style="width: 30%">
                     <option value="" selected disabled>Please select an option</option>
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
@@ -155,7 +155,7 @@
             <div class="form-group">
                 <label for="question1"> <strong>You feel more energetic after spending time with a group of
                         people.</strong> </label>
-                <select class="form-control" id="question1" style="width: 30%">
+                <select class="form-control" id="question10" style="width: 30%">
                     <option value="" selected disabled>Please select an option</option>
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
@@ -164,8 +164,7 @@
                     <option>5(Strongly Agree)</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;background-color:navy"><i
-                    class="fa fa-check"></i> Submit</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%;background-color:navy" id="submit"><iclass="fa fa-check"></i> Submit</button>
         </form>
     </section>
     <hr>
@@ -174,6 +173,34 @@
             <a href="#">Git Repo</a>
         </section>
        
+        <script>
+            $("#submit").on("click", function (event) {
+                event.preventDefault();
+                var person = {
+                    name: $("#name").val().trim(),
+                    image_link: $("#img_link").val().trim(),
+                    que1: $("#question1").val().trim(),
+                    que2: $("#question2").val().trim(),
+                    que3: $("#question3").val().trim(),
+                    que4: $("#question4").val().trim(),
+                    que5: $("#question5").val().trim(),
+                    que6: $("#question6").val().trim(),
+                    que7: $("#question7").val().trim(),
+                    que8: $("#question8").val().trim(),
+                    que9: $("#question9").val().trim(),
+                    que10: $("#question10").val().trim(),
+                };
+    
+                $.post("/survey", person).then(function (data) {
+                    console.log(data);
+                  
+                        alert("added!");
+                    
+                });
+            });
+        </script>
+    
+    
 
 
 </body>
